@@ -5,15 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BracciaCap AI — Autonomous AI Agents for RIA Advisors</title>
     <meta name="description" content="AI agents that handle compliance, portfolio management, client reporting, and rebalancing — so RIAs can focus on relationships.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1b2a4a">
+    <meta name="author" content="Braccia Capital LLC">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="BracciaCap AI — AI Agents for RIA Advisors">
     <meta property="og:description" content="Autonomous AI agents for Registered Investment Advisors. Compliance, portfolios, reporting, growth — on autopilot.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bracciacap.com">
+    <meta property="og:site_name" content="BracciaCap AI">
+    <meta property="og:image" content="https://bracciacap.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BracciaCap AI — AI Agents for RIA Advisors">
+    <meta name="twitter:description" content="Autonomous AI agents for RIAs. Compliance, portfolios, reporting, growth — on autopilot.">
+    <meta name="twitter:image" content="https://bracciacap.com/og-image.jpg">
+
     <link rel="canonical" href="https://bracciacap.com">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&display=swap" rel="stylesheet">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BracciaCap AI",
+        "legalName": "Braccia Capital LLC",
+        "url": "https://bracciacap.com",
+        "description": "Autonomous AI agents purpose-built for Registered Investment Advisors — handling compliance, portfolio management, client reporting, and practice growth.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "115 Broadway, Suite 1100",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "postalCode": "10006",
+            "addressCountry": "US"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "ai@bracciacap.com",
+            "contactType": "sales"
+        },
+        "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "BracciaCap AI",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "AI-powered autonomous agents for RIA compliance, portfolio management, reporting, and growth.",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter",
+                "price": "499",
+                "priceCurrency": "USD",
+                "priceValidUntil": "2027-12-31",
+                "description": "Solo advisors under $100M AUM — 2 AI Agents, up to 200 accounts"
+            },
+            {
+                "@type": "Offer",
+                "name": "Professional",
+                "price": "1299",
+                "priceCurrency": "USD",
+                "priceValidUntil": "2027-12-31",
+                "description": "Growing firms $100M–$500M — All 4 AI Agents, unlimited accounts"
+            }
+        ],
+        "provider": {
+            "@type": "Organization",
+            "name": "Braccia Capital LLC"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "How is this different from other RIA tools?", "acceptedAnswer": {"@type": "Answer", "text": "Most tools assist — they summarize or surface info. Our agents are autonomous operators that execute: generating compliance docs, rebalancing portfolios, delivering reports, booking calls."}},
+            {"@type": "Question", "name": "Is my client data safe?", "acceptedAnswer": {"@type": "Answer", "text": "AES-256 at rest, TLS 1.3 in transit, SOC 2 Type II certified. US-only data residency. Zero-knowledge architecture. Full audit trail for SEC exams."}},
+            {"@type": "Question", "name": "Do I need to switch custodians?", "acceptedAnswer": {"@type": "Answer", "text": "No. We integrate with Schwab, Fidelity, Altruist, Wealthbox, Redtail, Salesforce, and 30+ tools. No rip-and-replace."}},
+            {"@type": "Question", "name": "Can agents trade without my approval?", "acceptedAnswer": {"@type": "Answer", "text": "You're always in control. Agents generate proposals you approve with one click. For full automation, enable it within your IPS guardrails."}},
+            {"@type": "Question", "name": "How long does setup take?", "acceptedAnswer": {"@type": "Answer", "text": "Most firms are live within 2 weeks. Day 1: connect accounts. Days 2-5: configure your playbook. Days 5-14: supervised mode. Then fully autonomous."}},
+            {"@type": "Question", "name": "Is there a free trial?", "acceptedAnswer": {"@type": "Answer", "text": "30 days, full access, no credit card. Dedicated onboarding specialist included."}}
+        ]
+    }
+    </script>
     <style>
         :root {
             --white: #ffffff;
@@ -738,6 +827,48 @@
         .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+        /* Skip link */
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--black); color: var(--white); padding: 8px 16px; z-index: 10000; font-size: 0.85rem; transition: top 0.2s; }
+        .skip-link:focus { top: 0; }
+
+        /* Focus styles */
+        *:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+        .btn:focus-visible, .btn-nav:focus-visible, .price-cta:focus-visible { outline-offset: 3px; }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+            .fade-up { opacity: 1; transform: none; }
+        }
+
+        /* FAQ aria state */
+        .faq-item[aria-expanded="true"] .faq-a { display: block; }
+        .faq-item:not([aria-expanded="true"]) .faq-a { display: none; }
+        .faq-item[aria-expanded="true"] .toggle { transform: rotate(45deg); }
+
+        /* ═══════════════════════════════════
+           CONTACT FORM
+           ═══════════════════════════════════ */
+        .contact-form { max-width: 520px; margin: 0 auto; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.75rem 1rem; font-family: inherit; font-size: 0.9rem;
+            border: 1px solid var(--border-strong); border-radius: 8px; background: var(--white);
+            color: var(--text); transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--green); outline: none; box-shadow: 0 0 0 3px rgba(1,188,72,0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-submit { text-align: center; margin-top: 1.5rem; }
+        .form-submit .btn { width: 100%; justify-content: center; }
+        .form-success { text-align: center; padding: 2rem; }
+        .form-success h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--green); }
+        .form-success p { color: var(--text-secondary); }
+        @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
+
         /* ═══════════════════════════════════
            RESPONSIVE
            ═══════════════════════════════════ */
@@ -770,6 +901,7 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="sky-bg"></div>
 
 <!-- NAV -->
@@ -790,12 +922,12 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content">
     <div class="hero-inner fade-up">
-        <h1>Stronger relationships. Better outcomes.</h1>
-        <p>Join the platform of choice for RIAs who want autonomous AI agents, lower costs, and more time to do the real work of advising clients.</p>
+        <h1>Your practice, fully autonomous.</h1>
+        <p>AI agents that handle compliance, portfolios, reporting, and growth — so you can spend every hour where it matters: with your clients.</p>
         <div class="hero-cta">
-            <a href="#demo" class="btn btn-white">Try BracciaCap</a>
+            <a href="#demo" class="btn btn-white">Request a Demo</a>
             <a href="#agents" class="btn" style="background:transparent;color:rgba(255,255,255,0.8);border:1.5px solid rgba(255,255,255,0.3)">See the agents</a>
         </div>
     </div>
@@ -1007,13 +1139,13 @@
 <section class="w-section" id="faq">
     <div class="container fade-up">
         <div class="sh"><h2>Frequently asked questions</h2></div>
-        <div class="faq-list">
-            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is this different from other RIA tools?<span class="toggle">+</span></button><div class="faq-a"><p>Most tools assist — they summarize or surface info. Our agents are autonomous operators that execute: generating compliance docs, rebalancing portfolios, delivering reports, booking calls.</p></div></div>
-            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my client data safe?<span class="toggle">+</span></button><div class="faq-a"><p>AES-256 at rest, TLS 1.3 in transit, SOC 2 Type II certified. US-only data residency. Zero-knowledge architecture. Full audit trail for SEC exams.</p></div></div>
-            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to switch custodians?<span class="toggle">+</span></button><div class="faq-a"><p>No. We integrate with Schwab, Fidelity, Altruist, Wealthbox, Redtail, Salesforce, and 30+ tools. No rip-and-replace.</p></div></div>
-            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can agents trade without my approval?<span class="toggle">+</span></button><div class="faq-a"><p>You're always in control. Agents generate proposals you approve with one click. For full automation, enable it within your IPS guardrails.</p></div></div>
-            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does setup take?<span class="toggle">+</span></button><div class="faq-a"><p>Most firms are live within 2 weeks. Day 1: connect accounts. Days 2-5: configure your playbook. Days 5-14: supervised mode. Then fully autonomous.</p></div></div>
-            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there a free trial?<span class="toggle">+</span></button><div class="faq-a"><p>30 days, full access, no credit card. Dedicated onboarding specialist included.</p></div></div>
+        <div class="faq-list" role="list">
+            <div class="faq-item" role="listitem" aria-expanded="false"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How is this different from other RIA tools?<span class="toggle">+</span></button><div class="faq-a" role="region"><p>Most tools assist — they summarize or surface info. Our agents are autonomous operators that execute: generating compliance docs, rebalancing portfolios, delivering reports, booking calls.</p></div></div>
+            <div class="faq-item" role="listitem" aria-expanded="false"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Is my client data safe?<span class="toggle">+</span></button><div class="faq-a" role="region"><p>AES-256 at rest, TLS 1.3 in transit, SOC 2 Type II certified. US-only data residency. Zero-knowledge architecture. Full audit trail for SEC exams.</p></div></div>
+            <div class="faq-item" role="listitem" aria-expanded="false"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Do I need to switch custodians?<span class="toggle">+</span></button><div class="faq-a" role="region"><p>No. We integrate with Schwab, Fidelity, Altruist, Wealthbox, Redtail, Salesforce, and 30+ tools. No rip-and-replace.</p></div></div>
+            <div class="faq-item" role="listitem" aria-expanded="false"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Can agents trade without my approval?<span class="toggle">+</span></button><div class="faq-a" role="region"><p>You're always in control. Agents generate proposals you approve with one click. For full automation, enable it within your IPS guardrails.</p></div></div>
+            <div class="faq-item" role="listitem" aria-expanded="false"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How long does setup take?<span class="toggle">+</span></button><div class="faq-a" role="region"><p>Most firms are live within 2 weeks. Day 1: connect accounts. Days 2-5: configure your playbook. Days 5-14: supervised mode. Then fully autonomous.</p></div></div>
+            <div class="faq-item" role="listitem" aria-expanded="false"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Is there a free trial?<span class="toggle">+</span></button><div class="faq-a" role="region"><p>30 days, full access, no credit card. Dedicated onboarding specialist included.</p></div></div>
         </div>
     </div>
 </section>
@@ -1021,13 +1153,62 @@
 </div><!-- /knockout-inner -->
 </div><!-- /knockout -->
 
-<!-- CTA (back on sky) -->
+<!-- CTA / DEMO FORM (back on sky) -->
 <section class="cta-final fade-up" id="demo">
-    <h2>Made for all advisors, no matter where you custody.</h2>
-    <p>Even if you're not ready to switch anything, BracciaCap AI plugs into your existing stack and makes your practice flow better.</p>
-    <div class="hero-cta">
-        <a href="mailto:ai@bracciacap.com?subject=Demo%20Request&body=Firm%3A%20%0AAUM%3A%20%0ACustodian%3A%20" class="btn btn-white">Request a Demo</a>
-        <a href="mailto:ai@bracciacap.com" class="btn" style="background:transparent;color:rgba(255,255,255,0.8);border:1.5px solid rgba(255,255,255,0.3)">Talk to Sales</a>
+    <h2>See BracciaCap AI in action.</h2>
+    <p>30-day free trial. No credit card required. Dedicated onboarding included.</p>
+    <div style="max-width:520px;margin:2rem auto 0;text-align:left">
+        <form name="demo-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+            <input type="hidden" name="form-name" value="demo-request">
+            <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name" style="color:rgba(255,255,255,0.7)">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Jane Doe" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:#fff">
+                </div>
+                <div class="form-group">
+                    <label for="email" style="color:rgba(255,255,255,0.7)">Work Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="jane@firm.com" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:#fff">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firm" style="color:rgba(255,255,255,0.7)">Firm Name *</label>
+                    <input type="text" id="firm" name="firm" required placeholder="Your RIA" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:#fff">
+                </div>
+                <div class="form-group">
+                    <label for="aum" style="color:rgba(255,255,255,0.7)">AUM Range</label>
+                    <select id="aum" name="aum" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:#fff">
+                        <option value="">Select...</option>
+                        <option value="under-50m">Under $50M</option>
+                        <option value="50-100m">$50M – $100M</option>
+                        <option value="100-250m">$100M – $250M</option>
+                        <option value="250-500m">$250M – $500M</option>
+                        <option value="500m-1b">$500M – $1B</option>
+                        <option value="over-1b">$1B+</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="custodian" style="color:rgba(255,255,255,0.7)">Primary Custodian</label>
+                <select id="custodian" name="custodian" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:#fff">
+                    <option value="">Select...</option>
+                    <option value="schwab">Schwab</option>
+                    <option value="fidelity">Fidelity</option>
+                    <option value="altruist">Altruist</option>
+                    <option value="pershing">Pershing</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message" style="color:rgba(255,255,255,0.7)">Anything else?</label>
+                <textarea id="message" name="message" rows="3" placeholder="Tell us about your biggest operational challenge..." style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:#fff"></textarea>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="btn btn-white" style="border:none;cursor:pointer;font-family:inherit;width:100%">Request a Demo</button>
+            </div>
+            <p style="text-align:center;color:rgba(255,255,255,0.35);font-size:0.75rem;margin-top:0.8rem">We'll reach out within one business day. No spam, ever.</p>
+        </form>
     </div>
 </section>
 
@@ -1055,10 +1236,30 @@
 </footer>
 
 <script>
+    // Scroll nav
     window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+
+    // Fade-up observer
     const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e) { const t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth' }); document.getElementById('navLinks').classList.remove('open'); } }); });
+
+    // FAQ toggle with ARIA
+    function toggleFaq(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.getAttribute('aria-expanded') === 'true';
+        item.setAttribute('aria-expanded', !isOpen);
+        btn.setAttribute('aria-expanded', !isOpen);
+        item.classList.toggle('open');
+    }
+
+    // Netlify form success — show thank-you if redirected with ?success
+    if (window.location.search.includes('success')) {
+        const form = document.querySelector('form[name="demo-request"]');
+        if (form) form.innerHTML = '<div class="form-success"><h3>Thank you!</h3><p>We\'ll be in touch within one business day.</p></div>';
+    }
 </script>
 
 </body>
