@@ -1250,6 +1250,148 @@
         .fade-up-delay-3 { transition-delay: 0.3s; }
 
         /* ══════════════════════════════════════
+           ENHANCED EFFECTS
+           ══════════════════════════════════════ */
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(10px, -15px); }
+            50% { transform: translate(-5px, 10px); }
+            75% { transform: translate(15px, 5px); }
+        }
+
+        /* Glow border follow on featured pricing card */
+        .pricing-card.featured::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            background: radial-gradient(
+                300px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+                rgba(212, 168, 83, 0.12),
+                transparent 60%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+        .pricing-card.featured > * { position: relative; z-index: 1; }
+
+        /* Glowing line under section titles on hover */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Subtle shimmer on gold buttons */
+        .btn-gold {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-gold::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-25deg);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0%, 100% { left: -60%; }
+            50% { left: 120%; }
+        }
+
+        /* Smooth gradient border on hovered cards */
+        .pillar-card {
+            background-clip: padding-box;
+        }
+
+        /* Integration badges hover glow */
+        .integration-badge:hover {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Metric items subtle glow */
+        .metric-item:hover {
+            border-color: rgba(212, 168, 83, 0.15);
+            box-shadow: 0 0 30px rgba(212, 168, 83, 0.05);
+        }
+
+        /* FAQ smooth icon rotation */
+        .faq-question .toggle {
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hero orb transitions for parallax */
+        .orb {
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Testimonial card hover lift */
+        .testimonial-card {
+            transition: all 0.35s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+        }
+
+        /* Agent step progress line */
+        .agent-flow {
+            position: relative;
+        }
+        .agent-flow::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--blue), var(--gold), var(--green), var(--purple), var(--coral), var(--blue-glow));
+            border-radius: 3px;
+            opacity: 0.15;
+        }
+
+        /* Use case card gradient border on hover */
+        .use-case-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        /* Security card icon pulse on hover */
+        .security-card:hover .icon {
+            animation: iconPulse 0.5s ease;
+        }
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Step card number glow */
+        .step-number {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover .step-number {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Smooth cursor glow that follows mouse in hero (CSS only) */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37,99,235,0.04), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ══════════════════════════════════════
            RESPONSIVE
            ══════════════════════════════════════ */
         @media (max-width: 1024px) {
@@ -1990,11 +2132,13 @@
 
     <!-- ═══ SCRIPTS ═══ -->
     <script>
-        // Nav scroll effect
+        // Nav scroll effect with hide-on-scroll-down
         const navbar = document.getElementById('navbar');
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            const currentScroll = window.scrollY;
+            navbar.classList.toggle('scrolled', currentScroll > 50);
+            lastScroll = currentScroll;
         }, { passive: true });
 
         // Intersection Observer for fade-in animations
@@ -2008,7 +2152,6 @@
             threshold: 0.08,
             rootMargin: '0px 0px -40px 0px'
         });
-
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // Smooth scroll for nav links
@@ -2018,11 +2161,126 @@
                 if (target) {
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Close mobile menu
                     document.getElementById('navLinks').classList.remove('open');
                 }
             });
         });
+
+        // Animated counter for metrics
+        function animateCounters() {
+            document.querySelectorAll('.metric-item h3').forEach(el => {
+                if (el.dataset.animated) return;
+                const text = el.textContent.trim();
+                const match = text.match(/^([\$]?)([\d.]+)(.*)$/);
+                if (!match) return;
+                const prefix = match[1];
+                const target = parseFloat(match[2]);
+                const suffix = match[3];
+                const isDecimal = text.includes('.');
+                const duration = 1800;
+                const start = performance.now();
+                el.dataset.animated = '1';
+                function step(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = target * eased;
+                    el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            });
+        }
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) animateCounters();
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.metrics-bar').forEach(el => counterObserver.observe(el));
+
+        // Floating particles in hero
+        (function createParticles() {
+            const hero = document.querySelector('.hero-bg');
+            if (!hero) return;
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.cssText = `
+                    position:absolute;
+                    width:${2 + Math.random() * 3}px;
+                    height:${2 + Math.random() * 3}px;
+                    background:rgba(${Math.random() > 0.5 ? '96,165,250' : '212,168,83'},${0.15 + Math.random() * 0.2});
+                    border-radius:50%;
+                    left:${Math.random() * 100}%;
+                    top:${Math.random() * 100}%;
+                    animation:float ${8 + Math.random() * 12}s ease-in-out infinite;
+                    animation-delay:${-Math.random() * 10}s;
+                    pointer-events:none;
+                `;
+                hero.appendChild(p);
+            }
+        })();
+
+        // Parallax on mouse move for hero orbs
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            document.querySelector('.hero').addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                document.querySelectorAll('.orb').forEach((orb, i) => {
+                    const factor = (i + 1) * 0.5;
+                    orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+                });
+            });
+        }
+
+        // Typing effect for hero subtitle
+        (function typeEffect() {
+            const el = document.querySelector('.hero-badge');
+            if (!el) return;
+            const dot = el.querySelector('.pulse-dot');
+            const text = el.textContent.trim();
+            el.innerHTML = '';
+            if (dot) el.appendChild(dot);
+            const span = document.createElement('span');
+            el.appendChild(span);
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    span.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 25 + Math.random() * 15);
+                }
+            }
+            setTimeout(type, 600);
+        })();
+
+        // Card tilt on hover (subtle 3D effect)
+        document.querySelectorAll('.pillar-card, .security-card, .use-case-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `perspective(600px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg) translateY(-4px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.transition = 'transform 0.4s ease';
+                setTimeout(() => { card.style.transition = ''; }, 400);
+            });
+        });
+
+        // Glow border follow cursor on featured pricing card
+        const featuredCard = document.querySelector('.pricing-card.featured');
+        if (featuredCard) {
+            featuredCard.addEventListener('mousemove', (e) => {
+                const rect = featuredCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                featuredCard.style.setProperty('--glow-x', x + 'px');
+                featuredCard.style.setProperty('--glow-y', y + 'px');
+            });
+        }
     </script>
 
 </body>
